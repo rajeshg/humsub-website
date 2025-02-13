@@ -1,0 +1,27 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import LayoutWithHighlight from "../../layouts/LayoutWithHighlight.astro";
+
+export async function getStaticPaths() {
+	const eventsCollection = await getCollection("events");
+	return eventsCollection.map((entry) => ({
+		params: { slug: entry.data.slug },
+		props: { entry },
+	}));
+}
+
+const { slug } = Astro.params;
+
+const entry = await getEntry("events", slug);
+if (!entry) {
+	// Handle Error, for example:
+	throw new Error("Could not find blog post 1");
+}
+const { Content, headings } = await render(entry);
+---
+
+<LayoutWithHighlight>
+	<div class="prose p-4">
+		<Content />
+	</div>
+</LayoutWithHighlight>

@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import EventCard from "../components/EventCard.astro";
+import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
+const eventsCollection = await getCollection("events");
+
+// sort asc order of upcoming events
+const upcomingEvents = eventsCollection
+	.filter((event) => event.data.endDate > new Date())
+	.sort((a, b) => b.data.endDate.getTime() - a.data.endDate.getTime());
+// sort descending order and limit it to 3
+const pastEvents = eventsCollection
+	.filter((event) => event.data.endDate <= new Date())
+	.sort((a, b) => a.data.endDate.getTime() - b.data.endDate.getTime())
+	.slice(0, 3);
+---
+
+<LayoutWithHighlight>
+    <div class="prose my-4">
+        <h1>Upcoming Events</h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+            upcomingEvents.map((event) => (
+                <EventCard
+                    title={event.data.title}
+                    slug={event.data.slug}
+                    startDate={event.data.startDate.toString()}
+                    endDate={event.data.endDate.toString()}
+                    location={event.data.location}
+                    image={event.data.image}
+                />
+            ))
+        }
+    </div>
+
+    <div class="prose my-4">
+        <h2>Past Events</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+            pastEvents.map((event) => (
+                <EventCard
+                    title={event.data.title}
+                    slug={event.data.slug}
+                    startDate={event.data.startDate.toDateString()}
+                    endDate={event.data.endDate.toDateString()}
+                    location={event.data.location}
+                    image={event.data.image}
+                />
+            ))
+        }
+    </div>
+</LayoutWithHighlight>

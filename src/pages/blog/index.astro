@@ -1,111 +1,47 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import LayoutWithHighlight from "../../layouts/LayoutWithHighlight.astro";
+import BlogHeroImage from "../../components/BlogHeroImage.astro";
+const posts = (await getCollection("blog"))
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+<LayoutWithHighlight>
+	<section class="p-4 mx-auto">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			{
+				posts.map((post) => (
+					<div class="card w-full md:w-[2/3] bg-base-100 w-96 shadow-sm">
+						<figure>
+							<BlogHeroImage
+								name={post.data.title}
+								imagePath={post.data.heroImage ?? ""}
+								href={`/blog/${post.id}/`}
+								description={post.data.description}
+							/>
+						</figure>
+						<div class="card-body">
+							<h2 class="card-title">
+								<a
+									href={`/blog/${post.id}/`}
+									title={post.data.title}
+								>
+									{post.data.title}
 								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+							</h2>
+							<span class="date">
+								Published:{" "}
+								<FormattedDate date={post.data.pubDate} />
+							</span>
+							<div>
+								{post.data.description} <br />
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</LayoutWithHighlight>

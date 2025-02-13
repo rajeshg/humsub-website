@@ -1,0 +1,112 @@
+---
+import YoutubePlaylist from "../components/YoutubePlaylist.astro";
+import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
+---
+
+<LayoutWithHighlight>
+    <div class="prose p-4">
+        <h1>Gallery - Pictures & Videos</h1>
+    </div>
+    <!-- name of each tab group should be unique -->
+    <div class="tabs tabs-border">
+        <input type="radio" name="my_tabs_2" class="tab" aria-label="Pictures" checked="checked" />
+        <div class="tab-content border-base-300 bg-base-100 p-10">
+            <ul class="prose">
+                <li>
+                    <a href="https://photos.app.goo.gl/YjXYubCGCdYyfQ4b9">YAA Luncheon 2024</a>
+                </li>
+                <li>
+                    <a href="https://drive.google.com/drive/folders/1m_ddmbgVrZrToUh-79_Xn5wZuqffL3Bt?usp=sharing">Hum Sub Diwali 2024</a>
+                </li>
+                <li>
+                    <a href="https://hum-sub-basant-bahar.pictogenix.com/">Basant Bahar 2024</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjB2U7L">YAA Luncheon 2023</a>
+                </li>
+                <li>Hum Sub Diwali 2023:</li>
+                <ul>
+                    <li>
+                        <a href="https://flic.kr/s/aHBqjAYDAn">John Tal Collection</a>
+                    </li>
+                    <li>
+                        <a href="https://flic.kr/s/aHBqjB31Wb">ABFotos Collection</a>
+                    </li>
+                </ul>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjATEX3">Lazy Daze - Aug 2023(Partner Event)</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjAEzGx">Cultural Festival 2023 @TMSA (Partner Event)</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjAEzBY">Sponsorship Dinner 2023</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjABPpu">EarthFest 2023 (Partner Event)</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjABTUH">Spring Daze 2023 (Partner Event)</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjABSCR">Sterling International Festival 2023 (Partner Event)</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjAvSQK">Basant Bahar 2023 Pictures</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/gp/155699555@N08/rMVgdHP0n6">Youth Achievement Award Luncheon 2022</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjAbHT1">Hum Sub Diwali 2022 (Set 1)- All Pictures</a>
+                </li>
+                <li>Hum Sub Diwali 2022 (Set 2)</li>
+                <ul>
+                    <li>
+                        <a href="https://flic.kr/s/aHBqjAbLQJ">Hum Sub Diwali 2022 - Morning Segment</a>
+                    </li>
+                    <li>
+                        <a href="https://flic.kr/s/aHBqjAbLS2">Hum Sub Diwali 2022 - Evening Segment</a>
+                    </li>
+                </ul>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjACK3D">Indian Culture Learning Series 2022</a>
+                </li>
+                <li>
+                    <a href="https://flic.kr/s/aHBqjzGxgu">Basant Bahar 2022 Pictures</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/gp/155699555@N08/sQXd20">Cary Diwali 2021 Pictures</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/155699555@N08/sets/72157711624058531">2019 Youth Achievement Award Luncheon</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/155699555@N08/sets/72157711624058531">2019 Youth Achievement Award Luncheon</a>
+                </li>
+                <li class="">
+                    <a href="https://flic.kr/s/aHsmHMUWxx">Cary Diwali 2019 Pictures</a>
+                </li>
+                <li class="">
+                    <a href="https://www.flickr.com/gp/155699555@N08/B690SZ">Basant Bahar 2019 pictures</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/155699555@N08/albums/72157673134563367">2018 Youth Achievement Award Luncheon Pics</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/gp/155699555@N08/ZxeM2b">Cary Diwali 2018 Pics</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/155699555@N08/albums/72157693950842184">Basant Bahar 2018 Pics</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/155457582@N04/albums/72157688152144823">Cary Diwali 2017 Pics</a>
+                </li>
+            </ul>
+        </div>   
+        <input type="radio" name="my_tabs_2" class="tab" aria-label="Videos" />
+        <div class="tab-content border-base-300 bg-base-100 p-10">
+            <YoutubePlaylist />
+        </div>
+    </div>
+</LayoutWithHighlight>

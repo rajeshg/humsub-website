@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+	name: string;
+	href?: string;
+	description?: string;
+	imagePath: string;
+}
+
+const { name, href, description, imagePath } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**");
+if (!images[imagePath])
+	throw new Error(
+		`"${imagePath}" does not exist in glob: "src/assets/**.{jpeg,jpg,png,gif}"`,
+	);
+---
+
+<div
+    class="card card-sm bg-base-100 shadow-sm flex justify-center place-items-center"
+>
+    <figure class="mb-2 p-4">
+        {
+            href ? (
+                <a href={href} target="_blank">
+                    <Image
+                        src={images[imagePath]()}
+                        alt={name}
+                        layout="responsive"
+                        fit="contain"
+                        width="200"
+                        height="200"
+                        loading={"lazy"}
+                        class="flex place-items-center justify-center"
+                    />
+                </a>
+            ) : (
+                <Image
+                    src={images[imagePath]()}
+                    alt={name}
+                    layout="responsive"
+                    fit="contain"
+                    width="250"
+                    height="200"
+                    class="flex place-items-center justify-center"
+                />
+            )
+        }
+    </figure>
+    <div class="mt-0">
+        <h2 class="text-xl text-center justify-center mt-0 mb-2">{name}</h2>
+        <p class="text-center italic px-2">{description}</p>
+    </div>
+</div>

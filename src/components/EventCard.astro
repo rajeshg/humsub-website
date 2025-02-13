@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+type LocalImage = {
+	src: string;
+	width: number;
+	height: number;
+	format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+};
+interface Props {
+	title: string;
+	slug: string;
+	startDate: string;
+	endDate: string;
+	location: string;
+	image: LocalImage;
+}
+const { title, startDate, endDate, location, image, slug } = Astro.props;
+const eventDateRange = dateRangeFormatter(startDate, endDate);
+
+// use Intl.DateTimeFormat to format the date range
+function dateRangeFormatter(startDate: string, endDate: string) {
+	const start = new Date(startDate);
+	const end = new Date(endDate);
+
+	return new Intl.DateTimeFormat("en-US", {
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+		hour: "numeric",
+		minute: "numeric",
+		hour12: true,
+	}).formatRange(start, end);
+}
+---
+
+<div class="card card-side bg-base-100 shadow-xl not-prose">
+    <figure>
+        <a href={`/events/${slug}`}>
+            <Image src={image} alt={title} width="200" /></a
+        >
+    </figure>
+    <div class="card-body p-2">
+        <a href={`/events/${slug}`} class="flex flex-col gap-1">
+            <h2 class="card-title">{title}</h2>
+            <div>{eventDateRange}</div>
+            <div>{location}</div>
+        </a>
+    </div>
+</div>
