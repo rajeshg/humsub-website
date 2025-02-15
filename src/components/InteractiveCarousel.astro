@@ -1,86 +1,48 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-interface Props {
-	imagePaths: string[];
-	interval?: number;
-}
+// import Swiper and modules styles
+import "swiper/css";
+import "swiper/css/pagination";
 
-const { imagePaths, interval = 2000 } = Astro.props as Props;
 const imageImports = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/assets/home-carousel/**",
+	"/src/assets/home-carousel/*.{png,jpg,jpeg,gif,webp,avif}",
 );
----
 
-<div class="carousel flex place-items-center w-full md:w-[2/3] not-prose">
-    {
-        imagePaths.map((image, index) => (
-            <div id={`slide${index + 1}`} class="carousel-item relative w-full">
-                <figure class="flex justify-center place-items-center shadow-sm bg-base-400 p-4">
+const images = Object.keys(imageImports);
+---
+<div class="swiper">
+    <div class="swiper-wrapper">
+        {images.map((image, index) => (
+            <div class="swiper-slide">
+                <figure> 
                     <Image
                         src={imageImports[image]()}
                         alt={`Slide ${index + 1}`}
                         layout="responsive"
-                        width={600}
-                        height={400}
                         class={"rounded-box"}
+                        height="400" 
                     />
                 </figure>
             </div>
-        ))
-    }
+        ))}
+    </div>
 </div>
-
-<script define:vars={{ interval }}>
-    const carouselElement = document.querySelector(".carousel");
-
-    if (carouselElement) {
-        let currentSlide = 1;
-        const totalSlides = carouselElement.children.length;
-
-        const showSlide = (slideNumber) => {
-            for (let i = 1; i <= totalSlides; i++) {
-                const slide = document.getElementById(`slide${i}`);
-                if (slide) {
-                    slide.classList.remove("active");
-                    slide.style.display = "none"; // Hide all slides
-                }
-            }
-            const currentSlideElement = document.getElementById(
-                `slide${slideNumber}`,
-            );
-            if (currentSlideElement) {
-                currentSlideElement.classList.add("active");
-                currentSlideElement.style.display = "block"; // Show current slide
-            }
-        };
-
-        const nextSlide = () => {
-            currentSlide = (currentSlide % totalSlides) + 1;
-            showSlide(currentSlide);
-        };
-
-        // Initialize carousel
-        showSlide(currentSlide);
-
-        let carouselInterval = setInterval(nextSlide, interval);
-
-        carouselElement.addEventListener("mouseover", () => {
-            clearInterval(carouselInterval);
-        });
-
-        carouselElement.addEventListener("mouseout", () => {
-            carouselInterval = setInterval(nextSlide, interval);
-        });
-    }
+<script>
+// core version + navigation, pagination modules:
+import Swiper from 'swiper';
+import { Pagination, Autoplay } from 'swiper/modules';
+// init Swiper:
+new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+    },
+    // configure Swiper to use modules
+    modules: [Pagination, Autoplay],
+    loop: true,
+});
 </script>
-
-<style>
-    .carousel-item {
-        display: none; /* Initially hide all slides */
-    }
-
-    .carousel-item.active {
-        display: block; /* Show active slide */
-    }
-</style>

@@ -7,11 +7,11 @@ const eventsCollection = await getCollection("events");
 // sort asc order of upcoming events
 const upcomingEvents = eventsCollection
 	.filter((event) => event.data.endDate > new Date())
-	.sort((a, b) => b.data.endDate.getTime() - a.data.endDate.getTime());
+	.sort((a, b) => a.data.endDate.getTime() - b.data.endDate.getTime());
 // sort descending order and limit it to 3
 const pastEvents = eventsCollection
 	.filter((event) => event.data.endDate <= new Date())
-	.sort((a, b) => a.data.endDate.getTime() - b.data.endDate.getTime())
+	.sort((a, b) => b.data.endDate.getTime() - a.data.endDate.getTime())
 	.slice(0, 3);
 ---
 

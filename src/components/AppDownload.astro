@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/humsub-logo.png";
+
+---
+<script lang="ts">
+    const APP_STORE_URL = "https://apps.apple.com/us/app/6636518213";
+    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.humsub2.app";
+    const UNIVERSAL_LINK = "https://yourwebsite.com/download"; // Fallback link for other platforms
+    const COOKIE_NAME = "HIDE_APP_DOWNLOAD";
+    const COOKIE_EXPIRY_DAYS = 7;
+
+    function getMobileOS() {
+        const userAgent = navigator.userAgent || navigator.vendor;
+
+        if (/android/i.test(userAgent)) {
+            return "android";
+        }
+
+        if (/iPad|iPhone|iPod/.test(userAgent) && !('MSStream' in window)) {
+            return "ios";
+        }
+
+        return "other";
+    }
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${expires};path=/`;
+    }
+
+    function getCookie(name) {
+        const nameEQ = `${name}=`;
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function redirectToStore() {
+        const os = getMobileOS();
+        console.log("OS detected: ", os);
+        setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
+        if (os === "ios") {
+            window.location.href = APP_STORE_URL;
+        } else if (os === "android") {
+            window.location.href = PLAY_STORE_URL;
+        } else {
+            window.location.href = UNIVERSAL_LINK;
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        if (getCookie(COOKIE_NAME)) {
+            document.querySelector(".app-download-container").style.display = "none";
+        }
+    });
+</script>
+
+<div class="app-download-container flex flex-col place-items-center justify-center space-y-4 relative md:hidden w-full bg-gray-100">
+    <div class="p-2">
+        <button onclick="redirectToStore()" class="btn btn-secondary btn-outline btn-lg">
+            <Image src={logo} alt="HumSub Logo" class="mr-2" layout="responsive" fit="contain" width="36" height="36"/>
+            <span>Download our mobile app</span>
+        </button>
+        <button onclick="this.parentElement.style.display='none'; setCookie(COOKIE_NAME, 'true', COOKIE_EXPIRY_DAYS);" class="btn btn-sm btn-circle absolute top-0 right-0">
+            ✕
+        </button>
+    </div>
+</div>

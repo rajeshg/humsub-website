@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+// import Swiper and modules styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+const imageImports = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/sponsors/*.{png,jpg,jpeg,gif,webp,avif}",
+);
+
+const images = Object.keys(imageImports);
+---
+<div class="sponsorswiper swiper">
+    <div class="swiper-wrapper">
+        {images.map((image, index) => (
+            <div class="swiper-slide">
+                <figure class="flex justify-center place-items-center bg-base-400 p-2">
+                    <Image
+                        src={imageImports[image]()}
+                        alt={`Slide ${index + 1}`}
+                        layout="responsive"
+                        fit="contain"
+                        height="120"
+                    />
+                </figure>
+            </div>
+        ))}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<style>
+    .swiper {
+        z-index:1;
+    }
+</style>
+
+<script>
+        // core version + navigation, pagination modules:
+import Swiper from 'swiper';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+const progressCircle = document.querySelector(".autoplay-progress svg") as HTMLElement;
+const progressContent = document.querySelector(".autoplay-progress span");
+
+// init Swiper:
+new Swiper('.sponsorswiper', {
+        slidesPerView: 'auto',
+        breakpoints: {
+                1024: {
+                        slidesPerView: 5,
+                },
+                0: {
+                        slidesPerView: 3,
+                },
+        },
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+        },
+        // configure Swiper to use modules
+        modules: [Pagination, Autoplay],
+        loop: true,
+        pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+        },
+        on: {
+                autoplayTimeLeft: function (_, time, progress) {
+                        if (progressCircle && progressContent) {
+                                progressCircle.style.setProperty("--progress", String(1 - progress));
+                                
+                        }
+                }
+        }
+});
+</script>

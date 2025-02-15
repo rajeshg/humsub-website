@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [ "6636518213.com.humsub.app" ],
+        "paths": ["/*"]
+      }
+    ]
+  }
+}
