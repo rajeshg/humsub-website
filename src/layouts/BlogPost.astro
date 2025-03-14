@@ -1,14 +1,14 @@
 ---
 import "../styles/global.css";
 import type { CollectionEntry } from "astro:content";
-import background from "../assets/background.svg";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import MobileSidebar from "../components/mobile-sidebar.astro";
 import TopNavigation from "../components/top-navigation.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import BlogHeroImage from "../components/BlogHeroImage.astro";
+import PageBackground from "../components/PageBackground.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
@@ -26,50 +26,49 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<div class="drawer">
 			<input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
 			<div class="drawer-content flex flex-col">
-				<!-- Navbar -->
-				<TopNavigation />
-				<img
-					id="background"
-					src={background.src}
-					alt=""
-					fetchpriority="high"
-				/>
-				<div class="container mx-auto max-w-7xl">
-					<article>
-						<div class="hero-image hero">
-							{
-								heroImage && (
-									<BlogHeroImage
-										name={title}
-										imagePath={heroImage ?? ""}
-									/>
-								)
-							}
-						</div>
-						<div class="prose p-4 mx-auto">
-							<div class="title">
-								<div class="date">
-									<FormattedDate date={pubDate} />
-									{
-										updatedDate && (
-											<div class="last-updated-on">
-												Last updated on{" "}
-												<FormattedDate
-													date={updatedDate}
-												/>
-											</div>
-										)
-									}
-								</div>
-								<h1>{title}</h1>
-								<hr />
+			  <!-- Navbar -->
+			  <TopNavigation />
+			  <PageBackground />
+			  <!-- Page content here -->
+			   <div class="container mx-auto max-w-7xl">
+				<article>
+					<div class="hero-image hero">
+						{
+							heroImage && (
+								<BlogHeroImage
+									name={title}
+									imagePath={heroImage ?? ""}
+								/>
+							)
+						}
+					</div>
+					<div class="prose p-4 mx-auto">
+						<div class="title">
+							<div class="date">
+								<FormattedDate date={pubDate} />
+								{
+									updatedDate && (
+										<div class="last-updated-on">
+											Last updated on{" "}
+											<FormattedDate
+												date={updatedDate}
+											/>
+										</div>
+									)
+								}
 							</div>
-							<slot />
+							<h1>{title}</h1>
+							<hr />
 						</div>
-					</article>
-				</div>
+						<slot />
+					</div>
+				</article>
+			   </div>
 			</div>
-			<MobileSidebar />
+			<div class="drawer-side">
+			  <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+			  <MobileMenu />
+			</div>
 		</div>
 		<Footer />
 	</body>
@@ -86,14 +85,5 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-	}
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
 	}
 </style>

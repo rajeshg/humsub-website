@@ -1,68 +1,45 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import logo25yr from "../assets/25yr-logo.png";
+import DesktopMenu from "./DesktopMenu.astro";
 ---
 
-<div class="navbar bg-base-100 shadow-sm p-2 not-prose">
-    <div class="navbar-start">
-        <div tabindex="0" role="button" class="p-2 lg:hidden">
-            <label
-                tabindex="0"
-                role="button"
-                for="my-drawer-3"
-                aria-label="open sidebar"
-                class="btn btn-square btn-lg btn-ghost"
-            >
-                <Icon name="lucide:menu" />
-            </label>
-        </div>
+<div class="navbar bg-base-300 w-full">
+    <div class="flex-none lg:hidden">
+        <label
+            for="my-drawer-3"
+            aria-label="open sidebar"
+            class="btn btn-square btn-ghost"
+        >
+            <Icon
+                name="lucide:menu"
+                class={`h-5 w-5 text-gray-600`}
+                aria-hidden="true"
+            />
+        </label>
+    </div>
 
-        <a href="/" class="w-14 md:w-24 md:mx-10">
-            <Image src={logo25yr} alt="hum sub logo" />
+    <div class="mx-2 px-2 flex flex-row">
+        <a href="/" aria-label="Hum Sub Home">
+            <img src={logo25yr.src} alt="Hum Sub logo" class="w-16 h-16" />
         </a>
     </div>
-
-    <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-md menu-horizontal px-1 z-1">
-            <li>
-                <details>
-                    <summary>Home</summary>
-                    <ul class="p-2 w-48">
-                        <li><a href="/about" title="About Hum Sub">About</a></li>
-                        <li><a href="/our-team" title="Our team">Our team</a></li>
-                        <li>
-                            <a href="/our-sponsors" title="Our Sponsors and Partners">Sponsors & Partners</a>
-                        </li>
-                        <li><a href="/gallery" title="Event Pictures and Videos">Gallery</a></li>
-                        <li><a href="/cultural-faq" title="Cultural FAQs">Cultural FAQ</a></li>
-                        <li><a href="/volunteer" title="Volunteer with us">Volunteer</a></li>
-                    </ul>
-                </details>
-            </li>
-            <li><a href="/events" title="Events">Events</a></li>
-            <li><a href="/blog" title="Blog">Blog</a></li>
-            <li><a href="/youth-ambassador" title="Youth Ambassador Program">Youth Ambassador</a></li>
-            <li><a href="/yaa" title="Youth Achievement Award">Youth Achievement Award</a></li>
-            <li><a href="/contact-us" title="Contact Us">Contact Us</a></li>
-        </ul>
+    <div class="navbar-center justify-center hidden lg:flex lg:flex-1">
+        <DesktopMenu />
     </div>
-
-    <div class="navbar-end">
-        <a class="btn" href="https://portal.humsub.org/" target="_blank">
-            <Icon name="lucide:log-in" class="ml-2" />
+    <div class="flex justify-end ml-auto">
+        <a
+            class="btn btn-primary text-white ml-auto"
+            href="https://portal.humsub.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Icon
+                name="lucide:external-link"
+                class={`h-5 w-5 text-white`}
+                aria-hidden="true"
+            />
             Portal
         </a>
     </div>
 </div>
-<style>
-    details[open] summary::before {
-        content: "";
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        cursor: auto;
-    }
-</style>

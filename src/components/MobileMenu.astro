@@ -1,0 +1,181 @@
+---
+import { Icon } from "astro-icon/components";
+
+// Define icon colors
+const iconColors = {
+	home: "text-blue-500",
+	info: "text-indigo-500",
+	users: "text-green-500",
+	handshake: "text-amber-500",
+	image: "text-purple-500",
+	"help-circle": "text-pink-500",
+	"heart-handshake": "text-red-500",
+	phone: "text-emerald-500",
+	"book-open": "text-cyan-500",
+	award: "text-orange-500",
+	trophy: "text-yellow-500",
+	calendar: "text-lime-500",
+	menu: "text-gray-600",
+};
+---
+
+<ul
+    class="text-lg space-y-2 pl-4 menu dropdown-content bg-base-100 rounded-box w-screen min-h-full p-4 shadow"
+    role="menu"
+>
+    <li role="menuitem">
+        <a href="/" class="flex items-center gap-2 py-2 hover:bg-base-200">
+            <Icon
+                name="lucide:home"
+                class={`w-4 h-4 ${iconColors.home}`}
+                aria-hidden="true"
+            />Home
+        </a>
+    </li>
+    <li class="menu-title pt-2"><span>About Us</span></li>
+    <li role="menuitem">
+        <ul class="space-y-2 pl-4">
+            <li>
+                <a
+                    href="/about"
+                    title="About Hum Sub"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:info"
+                        class={`w-4 h-4 ${iconColors.info}`}
+                        aria-hidden="true"
+                    />About
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/our-team"
+                    title="Our team"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:users"
+                        class={`w-4 h-4 ${iconColors.users}`}
+                        aria-hidden="true"
+                    />Our team
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/our-sponsors"
+                    title="Our Sponsors and Partners"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:handshake"
+                        class={`w-4 h-4 ${iconColors.handshake}`}
+                        aria-hidden="true"
+                    />Sponsors & Partners
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/gallery"
+                    title="Event Pictures and Videos"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:image"
+                        class={`w-4 h-4 ${iconColors.image}`}
+                        aria-hidden="true"
+                    />Gallery
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/cultural-faq"
+                    title="Cultural FAQs"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:help-circle"
+                        class={`w-4 h-4 ${iconColors["help-circle"]}`}
+                        aria-hidden="true"
+                    />Cultural FAQ
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/volunteer"
+                    title="Volunteer with us"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:heart-handshake"
+                        class={`w-4 h-4 ${iconColors["heart-handshake"]}`}
+                        aria-hidden="true"
+                    />Volunteer
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/contact-us"
+                    title="Contact us"
+                    class="py-2 hover:bg-base-200"
+                >
+                    <Icon
+                        name="lucide:phone"
+                        class={`w-4 h-4 ${iconColors.phone}`}
+                        aria-hidden="true"
+                    />Contact us
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li role="menuitem">
+        <a href="/blog" title="Blog" class="py-2 hover:bg-base-200">
+            <Icon
+                name="lucide:book-open"
+                class={`w-4 h-4 ${iconColors["book-open"]}`}
+                aria-hidden="true"
+            />Blog
+        </a>
+    </li>
+    <li class="menu-title pt-2"><span>Programs</span></li>
+    <li role="menuitem">
+        <a
+            href="/youth-ambassador"
+            title="Youth Ambassador Program"
+            class="py-2 hover:bg-base-200"
+        >
+            <Icon
+                name="lucide:award"
+                class={`w-4 h-4 ${iconColors.award}`}
+                aria-hidden="true"
+            />Ambassador
+        </a>
+    </li>
+    <li role="menuitem">
+        <a
+            href="/yaa"
+            title="Youth Achievement Award"
+            class="py-2 hover:bg-base-200"
+        >
+            <Icon
+                name="lucide:trophy"
+                class={`w-4 h-4 ${iconColors.trophy}`}
+                aria-hidden="true"
+            />Achievement Award
+        </a>
+    </li>
+    <li role="menuitem">
+        <a href="/events" title="Events" class="py-2 hover:bg-base-200">
+            <Icon
+                name="lucide:calendar"
+                class={`w-4 h-4 ${iconColors.calendar}`}
+                aria-hidden="true"
+            />Events
+        </a>
+    </li>
+</ul>
+<style>
+    .dropdown-content {
+        z-index: 1;
+    }
+</style>

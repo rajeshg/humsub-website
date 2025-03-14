@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
+import qrcodeImage from "../../public/YAA-2025-Application-QRcode.png";
+---
+
+<LayoutWithHighlight title="Youth Achievement Award Application">
+	<div class="prose p-4">
+		<h1>Youth Achievement Award Application</h1>
+	</div>
+	<div class="container flex flex-col gap-2">
+		<div class="card w-full bg-base-100 card-lg shadow-sm">
+			<div class="card-body">
+				<h2 class="card-title">YAA 2025 Application</h2>
+				<p>
+					Applications are now open for the 2025 Youth Achievement
+					Award or scan the QR code below to access the application form.
+				</p>
+				<Image
+					src={qrcodeImage}
+					alt="QR Code for YAA 2025 Application"
+					class="w-1/2 mx-auto max-w-64"
+				/>
+				
+				<div class="justify-end card-actions">
+					<a
+						href="https://form.jotform.com/250638631820152"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-primary"
+					>
+						APPLY
+					</a>
+				</div>
+			</div>
+		</div>
+		<embed
+			src="/YAA-2025-Guidelines.pdf"
+			type="application/pdf"
+			width="100%"
+			height="600px"
+		/>
+	</div>
+</LayoutWithHighlight>

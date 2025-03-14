@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -6,124 +7,264 @@ import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
 ---
 
 <style>
-    tr th:first-child {
-        padding-left: 1rem;
-        padding-right: 1rem;
+    .table-container {
+        margin: 0 1rem 2rem;
+        overflow-x: auto;
+    }
+    .contact-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .contact-table th, .contact-table td {
+        padding: 0.75rem;
+        text-align: left;
+        vertical-align: top;
+        word-break: normal;
+        white-space: normal;
+    }
+    .contact-table th:first-child {
+        min-width: 140px;
+    }
+    .contact-table td {
+        max-width: 200px;
+    }
+    .mobile-info {
+        display: none;
+    }
+    
+    @media (max-width: 768px) {
+        .contact-table {
+            font-size: 0.9rem;
+        }
+        .contact-table .phone-column,
+        .contact-table .email-column {
+            display: none;
+        }
+        .mobile-info {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .mobile-info span {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+        }
+        .mobile-info span svg {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+            align-self: center;
+        }
     }
 </style>
 <LayoutWithHighlight>
     <div class="prose p-4">
         <h1>Contact us</h1>
     </div>
-    <div class="overflow-x-auto">
-        <table class="table table-zebra">
-            <!-- head -->
+    
+    <div class="table-container">
+        <table class="contact-table table table-zebra">
             <thead>
                 <tr>
                     <th>Officer</th>
                     <th>Name</th>
-                    <th>Phone 919-371-4470<br />Option 1</th>
-                    <th>Email address</th>
+                    <th class="phone-column">Phone 919-371-4470<br />Option 1</th>
+                    <th class="email-column">Email address</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>President</th>
-                    <td>Sachin Joshi</td>
-                    <td>Sub Option 1</td>
-                    <td>president@humsub.net</td>
+                    <td>
+                        Sachin Joshi
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 1, Sub Option 1</span>
+                            <span>president@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 1</td>
+                    <td class="email-column">president@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Vice President</th>
-                    <td>Amardeep Bajaj</td>
-                    <td>Sub Option 2</td>
-                    <td>vicepresident@humsub.net</td>
+                    <td>
+                        Amardeep Bajaj
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 1, Sub Option 2</span>
+                            <span>vicepresident@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 2</td>
+                    <td class="email-column">vicepresident@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Treasurer</th>
-                    <td>Kaajal Nanavati</td>
-                    <td>Sub Option 3</td>
-                    <td>treasurer@humsub.net</td>
+                    <td>
+                        Kaajal Nanavati
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 1, Sub Option 3</span>
+                            <span>treasurer@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 3</td>
+                    <td class="email-column">treasurer@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Secretary</th>
-                    <td>Ekta Bhatia</td>
-                    <td>Sub. Option 4</td>
-                    <td>secretary@humsub.net</td>
+                    <td>
+                        Ekta Bhatia
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 1, Sub. Option 4</span>
+                            <span>secretary@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub. Option 4</td>
+                    <td class="email-column">secretary@humsub.net</td>
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <table class="table table-zebra">
-            <!-- head -->
+    <div class="table-container">
+        <table class="contact-table table table-zebra">
             <thead>
                 <tr>
                     <th>Committee</th>
                     <th>Chair Person</th>
-                    <th>Phone 919-371-4470<br />Option 2</th>
-                    <th>Email address</th>
+                    <th class="phone-column">Phone 919-371-4470<br />Option 2</th>
+                    <th class="email-column">Email address</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>Cultural Programs</th>
-                    <td>Vandana Pawar</td>
-                    <td>Sub Option 1</td>
-                    <td>cultural_programs@humsub.net</td>
+                    <td>
+                        Vandana Pawar
+                        <div class="mobile-info">
+                            <span><Icon
+                                name="lucide:phone"
+                                aria-hidden="true"
+                            />919-371-4470 Option 2, Sub Option 1</span>
+                            <span><Icon
+                                name="lucide:mail"
+                                aria-hidden="true"
+                            />cultural_programs@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 1</td>
+                    <td class="email-column">cultural_programs@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Vendor</th>
-                    <td>Dipendra Lamichhane</td>
-                    <td>Sub Option 2</td>
-                    <td>vendor@humsub.net</td>
+                    <td>
+                        Dipendra Lamichhane
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 2</span>
+                            <span>vendor@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 2</td>
+                    <td class="email-column">vendor@humsub.net</td>
                 </tr>
+                <!-- Continue the same pattern for the rest of the rows -->
                 <tr>
                     <th>Marketing/Social Media</th>
-                    <td>Rajesh Gollapudi</td>
-                    <td>Sub Option 3</td>
-                    <td>socialmedia@humsub.net</td>
+                    <td>
+                        Rajesh Gollapudi
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 3</span>
+                            <span>socialmedia@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 3</td>
+                    <td class="email-column">socialmedia@humsub.net</td>
                 </tr>
+                <!-- Add the same pattern for the remaining rows -->
                 <tr>
                     <th>Sponsorship and Grants</th>
-                    <td>Amardeep Bajaj</td>
-                    <td>Sub Option 4</td>
-                    <td>sponsorship@humsub.net</td>
+                    <td>
+                        Amardeep Bajaj
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 4</span>
+                            <span>sponsorship@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 4</td>
+                    <td class="email-column">sponsorship@humsub.net</td>
                 </tr>
                 <tr>
                     <th>VIP Liaison</th>
-                    <td>Sachin Joshi</td>
-                    <td>Sub Option 5</td>
-                    <td>president@humsub.net</td>
+                    <td>
+                        Sachin Joshi
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 5</span>
+                            <span>president@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 5</td>
+                    <td class="email-column">president@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Exhibition</th>
-                    <td>Usha Sankar</td>
-                    <td>Sub Option 6</td>
-                    <td>exhibition@humsub.net</td>
+                    <td>
+                        Usha Sankar
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 6</span>
+                            <span>exhibition@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 6</td>
+                    <td class="email-column">exhibition@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Professional</th>
-                    <td>Narendra Kalyankar</td>
-                    <td>Sub Option 8</td>
-                    <td>professional@humsub.net</td>
+                    <td>
+                        Narendra Kalyankar
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 8</span>
+                            <span>professional@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 8</td>
+                    <td class="email-column">professional@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Youth Ambassador</th>
-                    <td>Ekta Bhatia</td>
-                    <td>Sub Option 9</td>
-                    <td>youthambassadors@humsub.net</td>
+                    <td>
+                        Ekta Bhatia
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 9</span>
+                            <span>youthambassadors@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 9</td>
+                    <td class="email-column">youthambassadors@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Youth Achievement Award</th>
-                    <td>Padmaja Sharma</td>
-                    <td>Sub Option 10</td>
-                    <td>youthaward@humsub.net</td>
+                    <td>
+                        Padmaja Sharma
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 10</span>
+                            <span>youthaward@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 10</td>
+                    <td class="email-column">youthaward@humsub.net</td>
                 </tr>
                 <tr>
                     <th>Special Events</th>
-                    <td>Sachin Joshi</td>
-                    <td>Sub Option 5</td>
-                    <td>special_events@humsub.net</td>
+                    <td>
+                        Sachin Joshi
+                        <div class="mobile-info">
+                            <span>919-371-4470 Option 2, Sub Option 5</span>
+                            <span>special_events@humsub.net</span>
+                        </div>
+                    </td>
+                    <td class="phone-column">Sub Option 5</td>
+                    <td class="email-column">special_events@humsub.net</td>
                 </tr>
             </tbody>
         </table>

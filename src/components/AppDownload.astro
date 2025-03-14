@@ -1,74 +1,129 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/humsub-logo.png";
-
+import { Icon } from "astro-icon/components";
+const APP_STORE_URL = "https://apps.apple.com/us/app/6636518213";
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.humsub2.app";
 ---
-<script lang="ts">
-    const APP_STORE_URL = "https://apps.apple.com/us/app/6636518213";
-    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.humsub2.app";
-    const UNIVERSAL_LINK = "https://yourwebsite.com/download"; // Fallback link for other platforms
+
+<script>
+    // Constants
     const COOKIE_NAME = "HIDE_APP_DOWNLOAD";
     const COOKIE_EXPIRY_DAYS = 7;
 
-    function getMobileOS() {
+    // Helper functions
+    const getMobileOS = () => {
         const userAgent = navigator.userAgent || navigator.vendor;
-
-        if (/android/i.test(userAgent)) {
-            return "android";
-        }
-
-        if (/iPad|iPhone|iPod/.test(userAgent) && !('MSStream' in window)) {
-            return "ios";
-        }
-
+        if (/android/i.test(userAgent)) return "android";
+        if (/iPad|iPhone|iPod/.test(userAgent) && !('MSStream' in window)) return "ios";
+        // treat windows desktop as android
+        // if (/Win64/.test(userAgent)) return "android";
         return "other";
-    }
+    };
 
-    function setCookie(name, value, days) {
+    const setCookie = (name: string, value: string, days: number) => {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = `expires=${date.toUTCString()}`;
-        document.cookie = `${name}=${value};${expires};path=/`;
-    }
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+    };
 
-    function getCookie(name) {
+    const getCookie = (name: string) => {
         const nameEQ = `${name}=`;
         const ca = document.cookie.split(';');
         for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            let c = ca[i].trim();
             if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
         }
         return null;
-    }
+    };
 
-    function redirectToStore() {
+    // Initialize after DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const appBanner = document.getElementById("app-download-banner");
         const os = getMobileOS();
-        console.log("OS detected: ", os);
-        setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
+        console.log('DOM fully loaded and parsed', os);
+        
+        // Hide banner if cookie exists or not on mobile
+        if (getCookie(COOKIE_NAME) || os === "other") {
+            appBanner?.classList.add("hidden");
+            return;
+        }
+        
+        // Show appropriate store badge
+        const iosBadge = document.getElementById("ios-badge");
+        const androidBadge = document.getElementById("android-badge");
+        
         if (os === "ios") {
-            window.location.href = APP_STORE_URL;
+            androidBadge?.classList.add("hidden");
         } else if (os === "android") {
-            window.location.href = PLAY_STORE_URL;
-        } else {
-            window.location.href = UNIVERSAL_LINK;
+            iosBadge?.classList.add("hidden");
         }
-    }
-    document.addEventListener("DOMContentLoaded", function() {
-        if (getCookie(COOKIE_NAME)) {
-            document.querySelector(".app-download-container").style.display = "none";
-        }
+        console.log('os', os);
+        
+        // Show banner with animation after a short delay
+        setTimeout(() => {
+            appBanner?.classList.remove("translate-y-full");
+            appBanner?.classList.add("translate-y-0");
+        }, 500);
+        
+        // Dismiss handlers
+        document.getElementById("dismiss-banner")?.addEventListener("click", () => {
+            dismissBanner();
+        });
+        
+        document.getElementById("maybe-later")?.addEventListener("click", () => {
+            dismissBanner();
+        });
     });
+
+    const dismissBanner = () => {
+        const appBanner = document.getElementById("app-download-banner");
+        appBanner?.classList.remove("translate-y-0");
+        appBanner?.classList.add("translate-y-full");
+        
+        setTimeout(() => {
+            appBanner?.classList.add("hidden");
+        }, 300);
+        
+        setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
+    };
 </script>
 
-<div class="app-download-container flex flex-col place-items-center justify-center space-y-4 relative md:hidden w-full bg-gray-100">
-    <div class="p-2">
-        <button onclick="redirectToStore()" class="btn btn-secondary btn-outline btn-lg">
-            <Image src={logo} alt="HumSub Logo" class="mr-2" layout="responsive" fit="contain" width="36" height="36"/>
-            <span>Download our mobile app</span>
+<div
+    id="app-download-banner"
+    class="fixed bottom-0 left-0 right-0 md:hidden bg-base-100 shadow-lg transform translate-y-full transition-transform duration-300 ease-in-out z-50"
+>
+    <div class="relative p-4">
+        <!-- Close button -->
+        <button
+            id="dismiss-banner"
+            class="btn btn-circle btn-xs absolute top-2 right-2 bg-base-300 hover:bg-base-400 border-none text-base-content"
+            aria-label="Close"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
         </button>
-        <button onclick="this.parentElement.style.display='none'; setCookie(COOKIE_NAME, 'true', COOKIE_EXPIRY_DAYS);" class="btn btn-sm btn-circle absolute top-0 right-0">
-            ✕
-        </button>
+        
+        <!-- Content -->
+        <div class="flex items-center space-x-4">
+            <img src="/humsub-logo.png" alt="HumSub Logo" class="w-12 h-12 rounded-xl" width={48} />
+            <div class="flex-1">
+                <h3 class="font-bold text-lg">Get the HumSub App</h3>
+                <p class="text-sm text-base-content/80">Better experience, realtime notifications, and more!</p>
+            </div>
+        </div>
+        
+        <!-- App store buttons -->
+        <div class="mt-3 w-64 flex flex-col place-items-center justify-between mx-auto">
+            <a href={APP_STORE_URL} target="_blank" id="ios-badge" class="flex-1 mr-2">
+                <!-- ios badge -->
+                <Icon name="logos:apple-app-store" class="text-gray-500" size={48} />
+            </a>
+            <a href={PLAY_STORE_URL} target="_blank" id="android-badge" class="flex-1 ml-2">
+                <Icon name="logos:google-play" class="text-gray-500" />
+            </a>
+            <button id="maybe-later" class="btn btn-ghost btn-sm w-full mt-2 text-sm">Maybe later</button>
+        </div>
+        
+        <!-- Maybe later -->
     </div>
 </div>

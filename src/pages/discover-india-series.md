@@ -93,6 +93,8 @@ The grid of dots is based on the Fibonacci series and algebraic and numeric prin
 kolam epitomizes geometrical properties of symmetry, periodicity, and recursion.
 Join our kolam artists to learn more!
 
+Kolam Workshop – Mar 23, Sunday, 2 pm to 4 pm, Cary Regional Library
+
 Presenters: Veena Kannan and Rohini M
 Sept 18, Thursday, 6:30 pm to 8:30 pm, Cary Arts Center
 

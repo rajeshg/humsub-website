@@ -1,12 +1,12 @@
 ---
 import "../styles/global.css";
-import background from "../assets/background.svg";
 import Footer from "../components/Footer.astro";
-import MobileSidebar from "../components/mobile-sidebar.astro";
 import TopNavigation from "../components/top-navigation.astro";
 const { frontmatter } = Astro.props;
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import PageBackground from "../components/PageBackground.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 ---
 
 <!doctype html>
@@ -19,23 +19,22 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     </head>
     <body>
         <div class="drawer">
-            <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col">
-                <!-- Navbar -->
-                <TopNavigation />
-                <img
-                    id="background"
-                    src={background.src}
-                    alt=""
-                    fetchpriority="high"
-                />
-                <div class="container mx-auto p-4 prose max-w-7xl">
-                    <slot />
-                </div>
-            </div>
-            <MobileSidebar />
-        </div>
-        <Footer />
+			<input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+			<div class="drawer-content flex flex-col">
+			  <!-- Navbar -->
+			  <TopNavigation />
+			  <PageBackground />
+			  <!-- Page content here -->
+			   <div class="container mx-auto p-4 prose max-w-7xl">
+				   <slot />
+			   </div>
+			</div>
+			<div class="drawer-side">
+			  <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+			  <MobileMenu />
+			</div>
+		</div>
+		<Footer />
     </body>
 </html>
 <style>
@@ -49,14 +48,5 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-    }
-    #background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        filter: blur(100px);
     }
 </style>
