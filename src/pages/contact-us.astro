@@ -1,272 +1,260 @@
 ---
 import { Icon } from "astro-icon/components";
 import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<style>
-    .table-container {
-        margin: 0 1rem 2rem;
-        overflow-x: auto;
-    }
-    .contact-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .contact-table th, .contact-table td {
-        padding: 0.75rem;
-        text-align: left;
-        vertical-align: top;
-        word-break: normal;
-        white-space: normal;
-    }
-    .contact-table th:first-child {
-        min-width: 140px;
-    }
-    .contact-table td {
-        max-width: 200px;
-    }
-    .mobile-info {
-        display: none;
-    }
-    
-    @media (max-width: 768px) {
-        .contact-table {
-            font-size: 0.9rem;
-        }
-        .contact-table .phone-column,
-        .contact-table .email-column {
-            display: none;
-        }
-        .mobile-info {
-            display: block;
-            margin-top: 0.25rem;
-            font-size: 0.85rem;
-            color: #555;
-        }
-        .mobile-info span {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-        }
-        .mobile-info span svg {
-            width: 1rem;
-            height: 1rem;
-            flex-shrink: 0;
-            align-self: center;
-        }
-    }
-</style>
 <LayoutWithHighlight>
     <div class="prose p-4">
-        <h1>Contact us</h1>
-    </div>
-    
-    <div class="table-container">
-        <table class="contact-table table table-zebra">
-            <thead>
-                <tr>
-                    <th>Officer</th>
-                    <th>Name</th>
-                    <th class="phone-column">Phone 919-371-4470<br />Option 1</th>
-                    <th class="email-column">Email address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>President</th>
-                    <td>
-                        Sachin Joshi
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 1, Sub Option 1</span>
-                            <span>president@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 1</td>
-                    <td class="email-column">president@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Vice President</th>
-                    <td>
-                        Amardeep Bajaj
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 1, Sub Option 2</span>
-                            <span>vicepresident@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 2</td>
-                    <td class="email-column">vicepresident@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Treasurer</th>
-                    <td>
-                        Kaajal Nanavati
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 1, Sub Option 3</span>
-                            <span>treasurer@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 3</td>
-                    <td class="email-column">treasurer@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Secretary</th>
-                    <td>
-                        Ekta Bhatia
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 1, Sub. Option 4</span>
-                            <span>secretary@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub. Option 4</td>
-                    <td class="email-column">secretary@humsub.net</td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Contact Us</h1>
     </div>
 
-    <div class="table-container">
-        <table class="contact-table table table-zebra">
-            <thead>
-                <tr>
-                    <th>Committee</th>
-                    <th>Chair Person</th>
-                    <th class="phone-column">Phone 919-371-4470<br />Option 2</th>
-                    <th class="email-column">Email address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Cultural Programs</th>
-                    <td>
-                        Vandana Pawar
-                        <div class="mobile-info">
-                            <span><Icon
-                                name="lucide:phone"
-                                aria-hidden="true"
-                            />919-371-4470 Option 2, Sub Option 1</span>
-                            <span><Icon
-                                name="lucide:mail"
-                                aria-hidden="true"
-                            />cultural_programs@humsub.net</span>
+    <div class="px-4 py-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Officers</h2>
+        <p class="text-sm mb-4">Main Phone: 919-371-4470, Option 1</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">President</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Sachin Joshi</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 1, Sub Option 1</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 1</td>
-                    <td class="email-column">cultural_programs@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Vendor</th>
-                    <td>
-                        Dipendra Lamichhane
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 2</span>
-                            <span>vendor@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 2</td>
-                    <td class="email-column">vendor@humsub.net</td>
-                </tr>
-                <!-- Continue the same pattern for the rest of the rows -->
-                <tr>
-                    <th>Marketing/Social Media</th>
-                    <td>
-                        Rajesh Gollapudi
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 3</span>
-                            <span>socialmedia@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 3</td>
-                    <td class="email-column">socialmedia@humsub.net</td>
-                </tr>
-                <!-- Add the same pattern for the remaining rows -->
-                <tr>
-                    <th>Sponsorship and Grants</th>
-                    <td>
-                        Amardeep Bajaj
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 4</span>
-                            <span>sponsorship@humsub.net</span>
-                        </div>
-                    </td>
-                    <td class="phone-column">Sub Option 4</td>
-                    <td class="email-column">sponsorship@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>VIP Liaison</th>
-                    <td>
-                        Sachin Joshi
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 5</span>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>president@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 5</td>
-                    <td class="email-column">president@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Exhibition</th>
-                    <td>
-                        Usha Sankar
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 6</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Vice President</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Amardeep Bajaj</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 1, Sub Option 2</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>vicepresident@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Treasurer</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Kaajal Nanavati</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 1, Sub Option 3</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>treasurer@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Secretary</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Ekta Bhatia</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 1, Sub Option 4</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>secretary@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-gray-800">Committees</h2>
+        <p class="text-sm mb-4">Main Phone: 919-371-4470, Option 2</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Cultural Programs</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Vandana Pawar</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 1</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>cultural_programs@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Vendor</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Dipendra Lamichhane</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 2</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>vendor@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Marketing/Social Media</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Rajesh Gollapudi</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 3</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>socialmedia@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Sponsorship and Grants</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Amardeep Bajaj</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 4</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>sponsorship@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">VIP Liaison</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Sachin Joshi</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 5</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
+                            <span>president@humsub.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Exhibition</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Usha Sankar</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 6</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>exhibition@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 6</td>
-                    <td class="email-column">exhibition@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Professional</th>
-                    <td>
-                        Narendra Kalyankar
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Professional</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Narendra Kalyankar</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 8</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>professional@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 8</td>
-                    <td class="email-column">professional@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Youth Ambassador</th>
-                    <td>
-                        Ekta Bhatia
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Youth Ambassador</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Ekta Bhatia</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 9</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>youthambassadors@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 9</td>
-                    <td class="email-column">youthambassadors@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Youth Achievement Award</th>
-                    <td>
-                        Padmaja Sharma
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Youth Achievement Award</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Padmaja Sharma</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 10</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>youthaward@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 10</td>
-                    <td class="email-column">youthaward@humsub.net</td>
-                </tr>
-                <tr>
-                    <th>Special Events</th>
-                    <td>
-                        Sachin Joshi
-                        <div class="mobile-info">
-                            <span>919-371-4470 Option 2, Sub Option 5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
+                <div class="card-body">
+                    <h3 class="card-title">Special Events</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <div class="font-semibold">Sachin Joshi</div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:phone" aria-hidden="true" class="w-4 h-4" />
+                            <span>919-371-4470, Option 2, Sub Option 5</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="lucide:mail" aria-hidden="true" class="w-4 h-4" />
                             <span>special_events@humsub.net</span>
                         </div>
-                    </td>
-                    <td class="phone-column">Sub Option 5</td>
-                    <td class="email-column">special_events@humsub.net</td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </LayoutWithHighlight>
