@@ -29,3 +29,7 @@ pnpm-debug.log*
 
 # github
 .github
+
+# testoutput
+test-output/
+playwright-report

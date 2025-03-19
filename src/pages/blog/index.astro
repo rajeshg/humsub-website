@@ -13,7 +13,7 @@ const posts = (await getCollection("blog"))
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{
 				posts.map((post) => (
-					<div class="card w-full md:w-[2/3] bg-base-100 w-96 shadow-sm">
+					<div class="card blog-post w-full md:w-[2/3] bg-base-100 w-96 shadow-sm">
 						<figure>
 							<BlogHeroImage
 								name={post.data.title}
