@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
-title: About
+title: About Hum Sub
 ---
 
 # About us

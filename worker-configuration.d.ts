@@ -2,4 +2,5 @@
 
 interface Env {
 	ASSETS: Fetcher;
+	KV: KVNamespace;
 }

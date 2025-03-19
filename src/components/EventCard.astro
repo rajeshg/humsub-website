@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 type LocalImage = {
 	src: string;
@@ -7,15 +8,26 @@ type LocalImage = {
 	height: number;
 	format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
 };
+
 interface Props {
 	title: string;
 	slug: string;
 	startDate: string;
 	endDate: string;
 	location: string;
-	image: LocalImage;
+	image: LocalImage; // ImageMetadata
+	isPast?: boolean;
 }
-const { title, startDate, endDate, location, image, slug } = Astro.props;
+
+const {
+	title,
+	slug,
+	startDate,
+	endDate,
+	location,
+	image,
+	isPast = false,
+} = Astro.props;
 const eventDateRange = dateRangeFormatter(startDate, endDate);
 
 // use Intl.DateTimeFormat to format the date range
@@ -32,19 +44,60 @@ function dateRangeFormatter(startDate: string, endDate: string) {
 		hour12: true,
 	}).formatRange(start, end);
 }
+
+// Format date for display
+const formatDate = (dateString: string) => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString("en-US", {
+		month: "short",
+		day: "numeric",
+		year: "numeric",
+	});
+};
+
+const displayStartDate = formatDate(startDate);
+const displayEndDate = formatDate(endDate);
 ---
 
-<div class="card card-side bg-base-100 shadow-xl not-prose">
-    <figure>
-        <a href={`/events/${slug}`}>
-            <Image src={image} alt={title} width="200" /></a
-        >
-    </figure>
-    <div class="card-body p-2">
-        <a href={`/events/${slug}`} class="flex flex-col gap-1">
-            <h2 class="card-title">{title}</h2>
-            <div>{eventDateRange}</div>
-            <div>{location}</div>
-        </a>
+<article class={`card h-full overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ${isPast ? 'bg-base-100 dark:bg-slate-800/70' : 'bg-base-100 dark:bg-slate-800 border-t-4 border-primary dark:border-amber-400'}`}>
+  <figure class="relative h-48 overflow-hidden">
+    <Image 
+      src={image} 
+      alt={title} 
+      width={400} 
+      height={225}
+      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+    />
+    {isPast && (
+      <div class="absolute inset-0 bg-base-300/60 dark:bg-slate-900/70 flex items-center justify-center">
+        <span class="badge badge-lg bg-base-300 dark:bg-slate-700 text-base-content dark:text-slate-200">Past Event</span>
+      </div>
+    )}
+  </figure>
+  
+  <div class="card-body p-4">
+    <h3 class="card-title text-lg font-bold line-clamp-2">
+      {title}
+    </h3>
+    
+    <div class="mt-2 space-y-2 text-sm">
+      <div class="flex items-center gap-2">
+        <Icon name="mdi:calendar" class="w-4 h-4 text-primary dark:text-amber-300 flex-shrink-0" />
+        <span class="text-base-content/80 dark:text-slate-300">
+			{eventDateRange}
+        </span>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <Icon name="mdi:map-marker" class="w-4 h-4 text-primary dark:text-amber-300 flex-shrink-0" />
+        <span class="text-base-content/80 dark:text-slate-300 line-clamp-1">{location}</span>
+      </div>
     </div>
-</div>
+    
+    <div class="card-actions justify-end mt-4">
+      <a href={`/events/${slug}`} class="btn btn-sm btn-primary dark:bg-amber-600 dark:hover:bg-amber-500">
+        {isPast ? 'View Details' : 'Learn More'}
+      </a>
+    </div>
+  </div>
+</article>

@@ -3,9 +3,7 @@
 	"description": "Build a personal website, blog, or portfolio with Astro.",
 	"cloudflare": {
 		"label": "Astro Framework Starter",
-		"products": [
-			"Workers"
-		],
+		"products": ["Workers"],
 		"categories": [],
 		"icon_urls": [
 			"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
@@ -20,20 +18,21 @@
 		"@glidejs/glide": "^3.7.1",
 		"@iconify-json/logos": "^1.2.4",
 		"@iconify-json/lucide": "^1.2.31",
+		"@iconify-json/mdi": "^1.2.3",
 		"@tailwindcss/vite": "^4.0.14",
 		"astro": "5.5.3",
 		"astro-icon": "^1.1.5",
-		"swiper": "^11.2.5",
-		"tailwindcss": "^4.0.14",
-		"cross-env": "^7.0.3"
+		"cross-env": "^7.0.3",
+		"swiper": "^11.2.6",
+		"tailwindcss": "^4.0.14"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@cloudflare/workers-types": "^4.20250317.0",
+		"@cloudflare/workers-types": "^4.20250319.0",
 		"@playwright/test": "^1.51.1",
 		"@tailwindcss/typography": "^0.5.16",
 		"daisyui": "5.0.6",
-		"wrangler": "^4.1.0"
+		"wrangler": "^4.2.0"
 	},
 	"scripts": {
 		"astro": "astro",

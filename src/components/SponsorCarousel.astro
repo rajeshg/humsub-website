@@ -15,7 +15,7 @@ const images = Object.keys(imageImports);
     <div class="swiper-wrapper">
         {images.map((image, index) => (
             <div class="swiper-slide">
-                <figure class="flex justify-center place-items-center bg-base-400 p-2">
+                <figure class="flex justify-center place-items-center bg-white p-2">
                     <Image
                         src={imageImports[image]()}
                         alt={`Slide ${index + 1}`}

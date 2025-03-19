@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
-title: Discover India Series
+title: Hum Sub - Discover India Series
 ---
 
 # Discover India Series

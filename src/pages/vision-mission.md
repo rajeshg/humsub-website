@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
-title: Vision & Mission
+title: Hum Sub - Vision & Mission
 ---
 
 # Vision & Mission

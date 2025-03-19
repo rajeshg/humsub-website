@@ -4,7 +4,7 @@ slug: basant-bahar-2025
 location: Cary Arts Center, 101 Dry Ave, Cary, NC 27511
 startDate: 2025-03-30 13:00:00
 endDate: 2025-03-30 19:00:00
-image: './basant-bahar.webp'
+image: './images/bb-2025-yaadein.jpg'
 ---
 # Basant Bahar 2025
 ## Theme
