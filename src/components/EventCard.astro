@@ -31,7 +31,7 @@ const {
 const eventDateRange = dateRangeFormatter(startDate, endDate);
 
 // use Intl.DateTimeFormat to format the date range
-function dateRangeFormatter(startDate: string, endDate: string) {
+export function dateRangeFormatter(startDate: string, endDate: string) {
 	const start = new Date(startDate);
 	const end = new Date(endDate);
 
@@ -54,9 +54,6 @@ const formatDate = (dateString: string) => {
 		year: "numeric",
 	});
 };
-
-const displayStartDate = formatDate(startDate);
-const displayEndDate = formatDate(endDate);
 ---
 
 <article class={`card h-full overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ${isPast ? 'bg-base-100 dark:bg-slate-800/70' : 'bg-base-100 dark:bg-slate-800 border-t-4 border-primary dark:border-amber-400'}`}>

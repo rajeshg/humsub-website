@@ -4,6 +4,7 @@ title: Hum Sub - Discover India Series
 ---
 
 # Discover India Series
+![Discover India Series 2025](/discover-india-series-2025.jpeg "Discover India Series 2025")
 
 Hum Sub's Discover India Series offers engaging workshops and presentations that explore India's rich culture. Learn about Indian art, music, dance, food, and traditions through interactive sessions led by experts. Open to all ages and backgrounds, this series is a great way to discover and celebrate the beauty of Indian culture.
 
@@ -20,7 +21,8 @@ Dates and Location:
 - March 20, Thursday, 6:30 pm to 8:30 pm, Herbert C Young Community Center  
 - May 3, Saturday, Eva Perry library, 3:30 to 4:30 pm
 - Sept 7, Sunday, Cary Regional Library, 2 pm to 4 pm
-Link to register: https://nccaryweb.myvscloud.com/webtrac/web/iteminfo.html?Module=AR&FMID=32492554&InterfaceParameter=WebTrac
+
+Link to register: [Click here](https://nccaryweb.myvscloud.com/webtrac/web/iteminfo.html?Module=AR&FMID=32492554&InterfaceParameter=WebTrac)
 
 ## Bollywood 101
 You know Hollywood but what is Bollywood? Is there a connection? Allow us to
@@ -30,8 +32,9 @@ the realities of Indian society, and more! Here’s your chance to ask all the q
 have always wanted to but didn’t know to whom. This presentation will be led by a
 creative Triangle-based dancer and actress who also has her own dance studio.
 
-Presenter: Sanskrit Inamdar and team
-May 22, Thursday, 6:30 pm to 8:30 pm, Herbert C Young Community Center
+Presenter: Sanskrit Inamdar and team  
+May 22, Thursday, 6:30 pm to 8:30 pm, Herbert C Young Community Center 
+
 Link to register: https://nccaryweb.myvscloud.com/webtrac/web/iteminfo.html?Module=AR&FMID=32494597&InterfaceParameter=WebTrac
 
 ## Madhubani Art
@@ -40,7 +43,7 @@ nature, mythology, and folklore, is believed to have been first developed by wom
 rural Bihar, India, to decorate the walls of their homes, especially during weddings and
 special occasions. Want to learn more about it? Register for this free workshop.
 
-Presenter: Manisha Goel
+Presenter: Manisha Goel  
 June 5, Thursday, 6:30 pm to 8:30 pm, Good Hope Farm
 
 ## Breath, Mindfulness, and Gut health: Your path to wellbeing
@@ -58,7 +61,7 @@ overall well-being. Discover how daily choices—like food, stress management, a
 lifestyle—affect your gut, and learn simple, effective ways to restore balance. Walk away
 with practical insights to nurture you gut and boost overall well being.
 
-Presenters: Pallavi Jois and Manisha Goel
+Presenters: Pallavi Jois and Manisha Goel  
 June 26, Thursday, 6:30 pm to 8:30 pm, Herbert C Young Community Center
 
 ## Indian Marriage Traditions
@@ -68,8 +71,8 @@ and cuisine. But the overarching common thread is the coming together of two fam
 not just two individuals. Join us for a fascinating journey into the heart of an Indian
 wedding set in a traditional “mandap” or focal area of the festivities.
 
-Presenter: Nikhat Khan and team
-July 24, Thursday, 6:30 pm to 8:30 pm, Page Walker Art &History Center
+Presenter: Nikhat Khan and team  
+July 24, Thursday, 6:30 pm to 8:30 pm, Page Walker Art & History Center
 
 ## India: Unity in Diversity
 A county of multiple faiths (officially 6) and languages (officially 22) , “unity in diversity”
@@ -79,7 +82,7 @@ thread that defines the India story? What is Sanskrit, the classical mother lang
 from which many other languages are derived? Let us help answer these and other
 questions about “Bharat”, the traditional name for India!
 
-Presenter: TBD
+Presenter: TBD  
 August 14, 6:30 pm to 8:30 pm, Page Walker Arts & History Center
 
 ## Kolam Art
@@ -95,7 +98,7 @@ Join our kolam artists to learn more!
 
 Kolam Workshop – Mar 23, Sunday, 2 pm to 4 pm, Cary Regional Library
 
-Presenters: Veena Kannan and Rohini M
+Presenters: Veena Kannan and Rohini M  
 Sept 18, Thursday, 6:30 pm to 8:30 pm, Cary Arts Center
 
 ## Costumes of India
@@ -105,8 +108,8 @@ Indian garments for women, but did you know that there is more than one way in w
 it is draped? Would you like to try out one of these styles and take a picture for keeps?
 Spend a fun evening exploring the world of Indian fashions!
 
-Oct 24, Friday, 6:30pm to 8:30 pm, Cary Arts Center
-Presenters: Hum Sub team and volunteers
+Oct 24, Friday, 6:30 pm to 8:30 pm, Cary Arts Center  
+Presenters: Hum Sub team and volunteers  
 
 ## Indian folklore through puppetry
 Puppet shows remain a favorite form of storytelling in India to this day. Traditionally,
@@ -115,5 +118,5 @@ written word. Indian society has relied heavily on stories to sustain its cultur
 identity. Come and enjoy this unique session that will take an innovative approach to
 tell a well-loved tale through puppets.
 
-Presenter: Sridevi Jagannath
-Nov 14, Friday, 6:30pm to 8:30 pm, Cary Arts Center
+Presenter: Sridevi Jagannath  
+Nov 14, Friday, 6:30 pm to 8:30 pm, Cary Arts Center

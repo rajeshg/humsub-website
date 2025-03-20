@@ -11,28 +11,28 @@
 		"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/33bbbf02-eda2-4d3f-b244-c27a280f3900/public"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "12.2.4",
+		"@astrojs/cloudflare": "12.3.0",
 		"@astrojs/mdx": "4.2.1",
 		"@astrojs/rss": "4.0.11",
 		"@astrojs/sitemap": "3.3.0",
 		"@glidejs/glide": "^3.7.1",
 		"@iconify-json/logos": "^1.2.4",
-		"@iconify-json/lucide": "^1.2.31",
+		"@iconify-json/lucide": "^1.2.32",
 		"@iconify-json/mdi": "^1.2.3",
-		"@tailwindcss/vite": "^4.0.14",
-		"astro": "5.5.3",
+		"@tailwindcss/vite": "^4.0.15",
+		"astro": "5.5.4",
 		"astro-icon": "^1.1.5",
 		"cross-env": "^7.0.3",
 		"swiper": "^11.2.6",
-		"tailwindcss": "^4.0.14"
+		"tailwindcss": "^4.0.15"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@cloudflare/workers-types": "^4.20250319.0",
+		"@cloudflare/workers-types": "^4.20250321.0",
 		"@playwright/test": "^1.51.1",
 		"@tailwindcss/typography": "^0.5.16",
-		"daisyui": "5.0.6",
-		"wrangler": "^4.2.0"
+		"daisyui": "5.0.9",
+		"wrangler": "^4.4.0"
 	},
 	"scripts": {
 		"astro": "astro",

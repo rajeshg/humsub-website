@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import EventCard from "../components/EventCard.astro";
-import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
+import EventCard from "../../components/EventCard.astro";
+import LayoutWithHighlight from "../../layouts/LayoutWithHighlight.astro";
 const eventsCollection = await getCollection("events");
 
 // sort asc order of upcoming events

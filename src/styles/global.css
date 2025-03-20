@@ -4,3 +4,12 @@
 	/* biome-ignore lint/correctness/noUnknownProperty: reason */
 	themes: light --default, dark --prefersdark;
 }
+
+
+#markdowncontent img {
+	max-height: 500px !important;
+	width: auto; /* Maintain aspect ratio */
+	object-fit: contain;
+	display: block;
+	margin: auto; /* Center horizontally */
+}
