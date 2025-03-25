@@ -27,8 +27,8 @@ const pastEvents = eventsCollection
                             <EventCard
                                 title={event.data.title}
                                 slug={event.data.slug}
-                                startDate={event.data.startDate.toString()}
-                                endDate={event.data.endDate.toString()}
+                                startDate={event.data.startDate}
+                                endDate={event.data.endDate}
                                 location={event.data.location}
                                 image={event.data.image}
                             />
@@ -56,8 +56,8 @@ const pastEvents = eventsCollection
                         <EventCard
                             title={event.data.title}
                             slug={event.data.slug}
-                            startDate={event.data.startDate.toDateString()}
-                            endDate={event.data.endDate.toDateString()}
+                            startDate={event.data.startDate}
+                            endDate={event.data.endDate}
                             location={event.data.location}
                             image={event.data.image}
                             isPast={true}

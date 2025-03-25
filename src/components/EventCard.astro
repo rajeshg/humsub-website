@@ -12,8 +12,8 @@ type LocalImage = {
 interface Props {
 	title: string;
 	slug: string;
-	startDate: string;
-	endDate: string;
+	startDate: Date;
+	endDate?: Date;
 	location: string;
 	image: LocalImage; // ImageMetadata
 	isPast?: boolean;
@@ -31,18 +31,30 @@ const {
 const eventDateRange = dateRangeFormatter(startDate, endDate);
 
 // use Intl.DateTimeFormat to format the date range
-export function dateRangeFormatter(startDate: string, endDate: string) {
-	const start = new Date(startDate);
-	const end = new Date(endDate);
+export function dateRangeFormatter(startDate: Date, endDate?: Date) {
+	try {
+		const formatter = new Intl.DateTimeFormat("en-US", {
+			year: "numeric",
+			month: "short",
+			day: "numeric",
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		});
 
-	return new Intl.DateTimeFormat("en-US", {
-		year: "numeric",
-		month: "short",
-		day: "numeric",
-		hour: "numeric",
-		minute: "numeric",
-		hour12: true,
-	}).formatRange(start, end);
+		// Check if formatRange is supported
+		if (!endDate) {
+			return formatter.format(startDate);
+		}
+		if (typeof formatter.formatRange === "function" && endDate) {
+			return formatter.formatRange(startDate, endDate);
+		}
+		// Fallback: Format start and end dates separately
+		return `${formatter.format(startDate)} - ${formatter.format(endDate)}`;
+	} catch (error) {
+		// Fallback for any parsing errors
+		return `${startDate.toString()} - ${endDate ? endDate.toString() : "N/A"}`;
+	}
 }
 
 // Format date for display

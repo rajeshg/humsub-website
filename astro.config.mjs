@@ -10,7 +10,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://example.com",
+	site: "https://humsub.org",
+	prefetch: {
+		defaultStrategy: "viewport",
+	},
 	integrations: [mdx(), icon(), sitemap()],
 
 	adapter: cloudflare({

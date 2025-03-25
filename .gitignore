@@ -28,7 +28,8 @@ pnpm-debug.log*
 .dev.vars
 
 # github
-.github
+.github/*
+!.github/workflows/
 
 # testoutput
 test-output/

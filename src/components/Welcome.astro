@@ -27,30 +27,32 @@ const upcomingEvents = eventsCollection
 					<div class="text-lg font-semibold flex items-center justify-center">
 						<span class="animate-pulse text-primary dark:text-amber-300">Upcoming Events</span>
 					</div>
-					<div class="flex flex-col md:flex-row gap-4 items-center justify-center">
+					<div class="flex flex-col md:flex-row gap-2 md:gap-4 w-full">
 						{upcomingEvents.map((event) => (
 							<a
 								href={`/events/${event.data.slug}`}
-								class="flex flex-row gap-3 link link-hover link-primary dark:link-accent place-items-center justify-center transition-transform hover:scale-105"
+								class="flex flex-row gap-3 link link-hover link-primary dark:link-accent items-center transition-transform hover:scale-105 w-full max-w-xs mx-auto"
 							>
-								<figure class="w-12 md:w-16 mask mask-decagon shadow-md">
+								<figure class="w-12 h-12 md:w-16 md:h-16 mask mask-decagon shadow-md flex-shrink-0 overflow-hidden">
 									<Image
 										src={event.data.image}
 										alt={event.data.title}
-										width="300"
-										height="200"
-										class="object-cover"
+										width={100}
+										height={100}
+										class="object-cover w-full h-full"
 									/>
 								</figure>
-								<span class="font-medium">{event.data.title} - {" "}
-								{new Date(event.data.startDate).toLocaleDateString(
-									"en-US",
-									{
-										day: "numeric",
-										month: "short",
-										year: "numeric",
-									},
-								)}</span>
+								<span class="font-medium truncate text-left">
+									{event.data.title} - {" "}
+									{new Date(event.data.startDate).toLocaleDateString(
+										"en-US",
+										{
+											day: "numeric",
+											month: "short",
+											year: "numeric",
+										},
+									)}
+								</span>
 							</a>
 						))}
 					</div>
@@ -171,42 +173,42 @@ const upcomingEvents = eventsCollection
 
 		<section class="shadow-lg rounded-xl bg-base-100 dark:bg-slate-800 p-4 my-4 grid grid-cols-2 md:grid-cols-4 gap-4">
 			<div class="relative bg-base-200/50 dark:bg-slate-700/70 rounded-lg p-4 flex flex-col">
-				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-blue-500 dark:text-blue-300">
+				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-blue-700 dark:text-blue-400">
 					<Icon name="mdi:lightning-bolt" class="h-6 w-6" />
 				</div>
-				<div class="text-sm font-medium text-gray-500 dark:text-slate-300">Attendees</div>
-				<div class="text-2xl font-bold text-blue-500 dark:text-blue-300 mt-1">
+				<div class="text-sm font-medium text-gray-700 dark:text-slate-200">Attendees</div>
+				<div class="text-2xl font-bold text-blue-700 dark:text-blue-400 mt-1">
 					15,000+
 				</div>
-				<div class="text-xs text-gray-500 dark:text-slate-400 mt-1">
+				<div class="text-xs text-gray-700 dark:text-slate-200 mt-1">
 					Largest event in South-East USA
 				</div>
 			</div>
 			<div class="relative bg-base-200/50 dark:bg-slate-700/70 rounded-lg p-4 flex flex-col">
-				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-red-500 dark:text-red-300">
+				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-red-700 dark:text-red-400">
 					<Icon name="mdi:heart" class="h-6 w-6" />
 				</div>
-				<div class="text-sm font-medium text-gray-500 dark:text-slate-300">Performers</div>
-				<div class="text-2xl font-bold text-red-500 dark:text-red-300 mt-1">1,200+</div>
-				<div class="text-xs text-gray-500 dark:text-slate-400 mt-1">On stage</div>
+				<div class="text-sm font-medium text-gray-700 dark:text-slate-200">Performers</div>
+				<div class="text-2xl font-bold text-red-700 dark:text-red-400 mt-1">1,200+</div>
+				<div class="text-xs text-gray-700 dark:text-slate-200 mt-1">On stage</div>
 			</div>
 			<div class="relative bg-base-200/50 dark:bg-slate-700/70 rounded-lg p-4 flex flex-col">
-				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-yellow-500 dark:text-yellow-300">
+				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-yellow-700 dark:text-yellow-400">
 					<Icon name="mdi:store" class="h-6 w-6" />
 				</div>
-				<div class="text-sm font-medium text-gray-500 dark:text-slate-300">Vendors</div>
-				<div class="text-2xl font-bold text-yellow-500 dark:text-yellow-300 mt-1">50+</div>
-				<div class="text-xs text-gray-500 dark:text-slate-400 mt-1">Food / Fashion / Business</div>
+				<div class="text-sm font-medium text-gray-700 dark:text-slate-200">Vendors</div>
+				<div class="text-2xl font-bold text-yellow-700 dark:text-yellow-400 mt-1">50+</div>
+				<div class="text-xs text-gray-700 dark:text-slate-200 mt-1">Food / Fashion / Business</div>
 			</div>
 			<div class="relative bg-base-200/50 dark:bg-slate-700/70 rounded-lg p-4 flex flex-col">
-				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-green-500 dark:text-green-300">
+				<div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-green-700 dark:text-green-400">
 					<Icon name="mdi:information" class="h-6 w-6" />
 				</div>
-				<div class="text-sm font-medium text-gray-500 dark:text-slate-300">Years in existence</div>
-				<div class="text-2xl font-bold text-green-500 dark:text-green-300 mt-1">
+				<div class="text-sm font-medium text-gray-700 dark:text-slate-200">Years in existence</div>
+				<div class="text-2xl font-bold text-green-700 dark:text-green-400 mt-1">
 					25
 				</div>
-				<div class="text-xs text-gray-500 dark:text-slate-400 mt-1">since 2000</div>
+				<div class="text-xs text-gray-700 dark:text-slate-200 mt-1">since 2000</div>
 			</div>
 		</section>
 		<section class="shadow-lg rounded-xl bg-base-100 dark:bg-slate-800 p-4 my-4">

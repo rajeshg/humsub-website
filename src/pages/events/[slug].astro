@@ -21,8 +21,8 @@ if (!entry) {
 	throw new Error(`Could not find event ${slug}`);
 }
 const eventDateRange = dateRangeFormatter(
-	entry.data.startDate.toISOString(),
-	entry.data.endDate.toISOString(),
+	entry.data.startDate,
+	entry.data.endDate,
 );
 const { Content, headings } = await render(entry);
 ---

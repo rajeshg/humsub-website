@@ -2,6 +2,6 @@
 	"files.associations": {
 		"wrangler.json": "jsonc"
 	},
-	"workbench.colorTheme": "Night Owl",
+	"workbench.colorTheme": "Night Owl Light",
 	"github.copilot.chat.codeGeneration.instructions": []
 }
