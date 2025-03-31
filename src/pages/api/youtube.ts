@@ -2,6 +2,11 @@
 import type { APIRoute } from "astro";
 
 export const prerender = false;
+// Set caching headers to store the response for 1 hour
+const headers = {
+	"Cache-Control": "public, s-maxage=86400, stale-while-revalidate=3600",
+};
+
 const API_KEY = import.meta.env.YOUTUBE_API_KEY;
 const CHANNEL_ID = "UCAAnYBbBb9gJ2cNOeG7lfNQ";
 const MAX_RESULTS = 50;
@@ -64,5 +69,6 @@ export const GET: APIRoute = async ({ locals }) => {
 		JSON.stringify({
 			videos,
 		}),
+		{ headers },
 	);
 };
