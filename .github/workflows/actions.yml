@@ -29,11 +29,11 @@ jobs:
       - name: Build project
         run: pnpm run build
       
-      - name: Run Playwright tests
-        uses: docker://mcr.microsoft.com/playwright:v1.51.1
-        with:
-          args: |
-            bash -c "npm install -g pnpm && pnpm test:e2e:run"
+      - name: Install Playwright browsers
+        run: pnpm run test:e2e:install
+      
+      - name: Run tests
+        run: pnpm run test:e2e:run
       
       - name: Upload build artifacts
         if: failure() && (steps.build.outcome == 'failure' || steps.tests.outcome == 'failure')
