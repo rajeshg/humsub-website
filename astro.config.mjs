@@ -14,7 +14,40 @@ export default defineConfig({
 	prefetch: {
 		defaultStrategy: "viewport",
 	},
-	integrations: [mdx(), icon(), sitemap()],
+	integrations: [
+		mdx(),
+		icon({
+			include: {
+				logos: ["apple-app-store", "google-play"],
+				lucide: [
+					"award",
+					"book-open",
+					"calendar",
+					"external-link",
+					"handshake",
+					"heart-handshake",
+					"help-circle",
+					"home",
+					"image",
+					"info",
+					"mail",
+					"menu",
+					"phone",
+					"trophy",
+					"users",
+				],
+				mdi: [
+					"calendar",
+					"heart",
+					"information",
+					"lightning-bolt",
+					"map-marker",
+					"store",
+				],
+			},
+		}),
+		sitemap(),
+	],
 
 	adapter: cloudflare({
 		imageService: "compile",
