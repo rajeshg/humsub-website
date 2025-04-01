@@ -32,7 +32,7 @@ jobs:
       - name: Run Playwright tests
         uses: docker://mcr.microsoft.com/playwright:v1.51.1
         with:
-          args: npx playwright test
+          args: pnpm test:e2e:run
       
       - name: Upload build artifacts
         if: failure() && (steps.build.outcome == 'failure' || steps.tests.outcome == 'failure')
