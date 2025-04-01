@@ -2,13 +2,6 @@
 import { getCollection } from "astro:content";
 import EventCard from "../../components/EventCard.astro";
 import LayoutWithHighlight from "../../layouts/LayoutWithHighlight.astro";
-export const prerender = false;
-
-// Set caching headers to store the response for 1 hour
-Astro.response.headers.set(
-	"Cache-Control",
-	"public, s-maxage=3600, stale-while-revalidate=1800",
-);
 
 const eventsCollection = await getCollection("events");
 
