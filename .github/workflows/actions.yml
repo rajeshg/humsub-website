@@ -29,11 +29,10 @@ jobs:
       - name: Build project
         run: pnpm run build
       
-      - name: Install Playwright browsers
-        run: pnpm run test:e2e:install
-      
-      - name: Run tests
-        run: pnpm run test:e2e:run
+      - name: Run Playwright tests
+        uses: mcr.microsoft.com/playwright:v1.51.1
+        with:
+          args: npx playwright test
       
       - name: Upload build artifacts
         if: failure() && (steps.build.outcome == 'failure' || steps.tests.outcome == 'failure')
