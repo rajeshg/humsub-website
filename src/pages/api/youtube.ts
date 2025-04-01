@@ -64,7 +64,6 @@ export const GET: APIRoute = async ({ locals }) => {
 	return new Response(
 		JSON.stringify({
 			videos,
-		}),
-		{ headers },
+		})
 	);
 };
