@@ -6,44 +6,56 @@ name: 'Build, Test, and Deploy'
   pull_request: null
 
 jobs:
-  build-test-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.41.0-jammy
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Install pnpm
+
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      
-      - name: Setup Node.js
+
+      - name: Setup Node.js with cache
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: pnpm
-      
+
+      - name: Cache Astro build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .astro
+            node_modules/.astro
+            node_modules/.vite
+          key: ${{ runner.os }}-astro-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-astro-${{ hashFiles('**/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-astro-
+
       - name: Install dependencies
-        run: pnpm install
-      
+        run: pnpm install --frozen-lockfile
+
       - name: Build project
+        id: build
         run: pnpm run build
-      
-      - name: Install Playwright browsers
-        run: pnpm run test:e2e:install
-      
+
       - name: Run tests
+        id: tests
         run: pnpm run test:e2e:run
-      
-      - name: Upload build artifacts
-        if: failure() && (steps.build.outcome == 'failure' || steps.tests.outcome == 'failure')
+
+      - name: Upload test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build-output
-          path: |
-            dist/
-            dist/.assetsignore
-      
+          name: test-results
+          path: test-results/
+          retention-days: 7
+          
       - name: Deploy to Cloudflare Workers
         if: github.ref == 'refs/heads/master'
         uses: cloudflare/wrangler-action@v3
