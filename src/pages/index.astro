@@ -2,14 +2,6 @@
 import Welcome from "../components/Welcome.astro";
 import LayoutWithHighlight from "../layouts/LayoutWithHighlight.astro";
 
-export const prerender = false;
-
-// Set caching headers to store the response for 1 hour
-Astro.response.headers.set(
-	"Cache-Control",
-	"public, s-maxage=3600, stale-while-revalidate=1800",
-);
-
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
